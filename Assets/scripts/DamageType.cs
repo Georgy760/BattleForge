@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageType
+public class DamageType : ScriptableObject
 {
         
 }
