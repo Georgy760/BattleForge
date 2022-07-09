@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Joystick joystick;
     [SerializeField] private Transform player;
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private MovementSpeed movementSpeed;
     void Start()
     {
         

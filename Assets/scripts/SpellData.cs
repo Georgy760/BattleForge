@@ -8,7 +8,6 @@ public class SpellData : ScriptableObject
     [SerializeField] private string Name;
     [SerializeField] private float castRange;
     [SerializeField] private float baseDamage;
-    [SerializeField] private CastingType castingType;
     [SerializeField] private Spell spell;
 
 

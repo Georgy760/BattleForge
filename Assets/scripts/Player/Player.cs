@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform takenFlag;
     [SerializeField] private Team team;
+    [SerializeField] private PlayerStats playerStats;
     
 
     private void OnTriggerEnter(Collider other)
