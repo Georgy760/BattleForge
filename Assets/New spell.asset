@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: New spell
   m_EditorClassIdentifier: 
   damageType: {fileID: 0}
+  castType: 0

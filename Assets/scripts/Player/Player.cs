@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Transform takenFlag;
     [SerializeField] private Team team;
-    [SerializeField] private PlayerStats playerStats;
+    //[SerializeField] private PlayerStats playerStats;
     
 
     private void OnTriggerEnter(Collider other)
