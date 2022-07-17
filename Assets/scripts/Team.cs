@@ -1,21 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-public class Team : MonoBehaviour
+public struct Team
 {
-    public string teamName;
+    private teamColor _teamColor;
+
+    public teamColor GetTeam()
+    {
+        return _teamColor;
+    }
+
+    public bool Equals(Team other)
+    {
+        return _teamColor == other._teamColor;
+    }
+
+    public static bool operator ==(Team team1, teamColor teamColor)
+    {
+        return !team1._teamColor.Equals(teamColor);
+    }
+    public static bool operator !=(Team team1, teamColor teamColor)
+    {
+        return !team1._teamColor.Equals(teamColor);
+    }
+    public Team(teamColor teamColor)
+    {
+        this._teamColor = teamColor;
+    }
     public enum teamColor
     {
         Red,
         Blue
     }
 
-    public bool CompareTeam(string teamName)
+    public bool CompareTeam(Team team)
     {
-        if (this.teamName == teamName) 
+        if (this._teamColor == team._teamColor) 
             return true;
         return false;
     }

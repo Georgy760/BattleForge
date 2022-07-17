@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Team), typeof(Collider))]
 public class Flag : MonoBehaviour
 {
     [SerializeField] private Transform FlagBase;
+    [SerializeField] private Team.teamColor _teamColor;
+    public Team team;
     private void Start()
     {
-        
+        team = new Team(_teamColor);
     }
 
     public void ReturnFlag()

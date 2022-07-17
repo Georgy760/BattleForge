@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2776722054434628814}
   - component: {fileID: 2776722054434628815}
   - component: {fileID: 2776722054434628848}
-  - component: {fileID: 2776722054434628849}
   - component: {fileID: 2776722054434628850}
   m_Layer: 0
   m_Name: Flag
@@ -99,19 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.060121, z: 1}
   m_Center: {x: -0, y: 1.060693, z: 0}
---- !u!114 &2776722054434628849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776722054434628852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423f9ccb99277ee4dbe42979dbeda4f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamName: 
 --- !u!114 &2776722054434628850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FlagBase: {fileID: 2776722054658211943}
+  _teamColor: 0
 --- !u!1 &2776722054658211944
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +158,6 @@ GameObject:
   - component: {fileID: 2776722055269596814}
   - component: {fileID: 2776722055269596815}
   - component: {fileID: 6863313043816267557}
-  - component: {fileID: 7698638321003309191}
   m_Layer: 0
   m_Name: FlagPlacement
   m_TagString: FlagPlacement
@@ -271,16 +257,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.060121, z: 1}
   m_Center: {x: -0, y: 1, z: 0}
---- !u!114 &7698638321003309191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2776722055269596849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423f9ccb99277ee4dbe42979dbeda4f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamName: 

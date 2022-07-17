@@ -4,17 +4,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerUnit : MonoBehaviour
 {
     [SerializeField] private Transform takenFlag;
-    [SerializeField] private Team team;
-    //[SerializeField] private PlayerStats playerStats;
+    [SerializeField] private Team.teamColor _teamColor;
+    public Team team;
     
+    //[SerializeField] private PlayerStats playerStats;
+    private void Start()
+    {
+        team = new Team(_teamColor);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision with: " + other.gameObject.name);
-        if (other.gameObject.CompareTag("Flag") && !takenFlag && !other.gameObject.GetComponent<Team>().CompareTeam(team.teamName))
+        if (other.gameObject.CompareTag("Flag") && !takenFlag)
         {
             var flag = other.transform;
             flag.SetParent(transform, true);
@@ -24,7 +29,7 @@ public class Player : MonoBehaviour
             Debug.Log("TakenFlag pos: " + takenFlag.position);
         }
 
-        if (other.gameObject.CompareTag("FlagPlacement") && takenFlag && other.gameObject.GetComponent<Team>().CompareTeam(team.teamName))
+        if (other.gameObject.CompareTag("FlagPlacement") && takenFlag)
         {
             takenFlag.GetComponent<Flag>().ReturnFlag();
             takenFlag = null;
