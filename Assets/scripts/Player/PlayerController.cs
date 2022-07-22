@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private Joystick joystick;
+    public Joystick joystick;
     [SerializeField] private Transform player;
     [SerializeField] private float speed;
     void Start()

@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 2776722055269596814}
   - component: {fileID: 2776722055269596815}
   - component: {fileID: 6863313043816267557}
+  - component: {fileID: 603214210747916376}
   m_Layer: 0
   m_Name: FlagPlacement
   m_TagString: FlagPlacement
@@ -257,3 +258,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.060121, z: 1}
   m_Center: {x: -0, y: 1, z: 0}
+--- !u!114 &603214210747916376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776722055269596849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c3608eb341992748b9b94b776038a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _teamColor: 0

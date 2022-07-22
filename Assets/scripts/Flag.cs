@@ -18,4 +18,6 @@ public class Flag : MonoBehaviour
         transform.SetParent(FlagBase, true);
         transform.localPosition = Vector3.zero;
     }
+    
+    
 }

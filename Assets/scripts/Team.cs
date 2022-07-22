@@ -12,14 +12,15 @@ public struct Team
         return _teamColor == other._teamColor;
     }
 
-    public static bool operator ==(Team team1, teamColor teamColor)
+    public static bool operator ==(Team team1, Team team2)
     {
-        return !team1._teamColor.Equals(teamColor);
+        return team1._teamColor.Equals(team2._teamColor);
     }
-    public static bool operator !=(Team team1, teamColor teamColor)
+    public static bool operator !=(Team team1, Team team2)
     {
-        return !team1._teamColor.Equals(teamColor);
+        return !team1._teamColor.Equals(team2._teamColor);
     }
+    //public static bool operator !(Team team)
     public Team(teamColor teamColor)
     {
         this._teamColor = teamColor;

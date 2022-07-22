@@ -19,7 +19,7 @@ public class PlayerUnit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision with: " + other.gameObject.name);
-        if (other.gameObject.CompareTag("Flag") && !takenFlag)
+        if (other.gameObject.CompareTag("Flag") && !takenFlag && other.GetComponent<Flag>().team != team)
         {
             var flag = other.transform;
             flag.SetParent(transform, true);
@@ -29,10 +29,11 @@ public class PlayerUnit : MonoBehaviour
             Debug.Log("TakenFlag pos: " + takenFlag.position);
         }
 
-        if (other.gameObject.CompareTag("FlagPlacement") && takenFlag)
+        if (other.gameObject.CompareTag("FlagPlacement") && takenFlag && other.GetComponent<FlagPlacement>().team == team)
         {
             takenFlag.GetComponent<Flag>().ReturnFlag();
             takenFlag = null;
+            Debug.Log("Flag returned");
         }
     }
     
