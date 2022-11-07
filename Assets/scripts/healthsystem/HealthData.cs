@@ -1,24 +1,49 @@
+using System;
 using UnityEngine;
 
 namespace healthsystem
 {
-    public class HealthData
+    public class HealthData : IDamageable
     {
         public float MaxHealth { get; set; }
         public float MinHealth { get; set; }
         
-        private float _initialHealth;
-        public float InitialHealth
+        private float _currentHealth;
+
+        private float _currentHealthNormalized;
+        public float CurrentHealth
         {
-            get => _initialHealth;
-            set => _initialHealth = Mathf.Clamp(value, MinHealth, MaxHealth);
+            get => _currentHealth;
+            set => _currentHealth = Mathf.Clamp(value, MinHealth, MaxHealth);
+        }
+
+        public float CurrentHealthNormalized
+        {
+            get => _currentHealth/100;
+        }
+
+        public event EventHandler HealthChanged;
+        public event EventHandler HealthDepleted;
+        public void ReduceHealthPoints(float amount)
+        {
+            CurrentHealth -= amount;
+        }
+
+        public void RestoreHealthPoints(float amount)
+        {
+            CurrentHealth += amount;
         }
 
         public HealthData(float max, float min, float initial)
         {
             MaxHealth = max;
             MinHealth = min;
-            InitialHealth = initial;
+            CurrentHealth = initial;
+        }
+
+        public HealthData()
+        {
+            //NOP
         }
     }
 }

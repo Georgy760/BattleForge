@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using healthsystem;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Zenject;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,7 +28,6 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
-        
     }
 
     private void FixedUpdate()

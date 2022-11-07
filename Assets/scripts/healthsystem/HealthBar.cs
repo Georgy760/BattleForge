@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using DG.Tweening;
 using progressbar;
 using UnityEngine;
 using Zenject;
 
 namespace healthsystem
-{ 
-    public class HealthBar : MonoBehaviour 
+{
+    public class HealthBar : MonoBehaviour
     {
         [SerializeField] private SliderProgressBar _healthBarDisplay;
-        [SerializeField] private SliderProgressBar _healthBarPreviewDisplay; 
-        
-        private IDamageable _damageable;
+        [SerializeField] private SliderProgressBar _healthBarPreviewDisplay;
+        private IDamageable _damageable = new HealthData(100, 0 , 100);
 
         [Inject]
         public void Construct(IDamageable damageable)
@@ -44,6 +42,22 @@ namespace healthsystem
                 _healthBarDisplay.SetFillAmountImmediate(_damageable.CurrentHealth);
                 _healthBarPreviewDisplay.SetFillAmountTween(_damageable.CurrentHealth, 1, Ease.InOutCubic);
             }
+        }
+
+        public float MaxHealth { get; set; }
+        public float MinHealth { get; set; }
+        public float CurrentHealth { get; set; }
+        public float CurrentHealthNormalized { get; }
+        public event EventHandler HealthChanged;
+        public event EventHandler HealthDepleted;
+        public void ReduceHealthPoints(float amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RestoreHealthPoints(float amount)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,22 +1,32 @@
 using Cinemachine;
+using healthsystem;
 using UnityEngine;
 using Zenject;
 
 public class PlayerInstaller : MonoInstaller
 {
-    [SerializeField] private PlayerUnit playerUnit;
+    [SerializeField] private PlayerUnit PlayerUnit;
     [SerializeField] private Transform playerSpawnPoint;
     [SerializeField] private VariableJoystick Joystick;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private HealthBar HealthBar;
     public override void InstallBindings()
     {
-        if(playerUnit.GetComponent<PlayerController>())
+        if(PlayerUnit.GetComponent<PlayerController>())
         {
-            playerUnit.GetComponent<PlayerController>().joystick = Joystick;
+            PlayerUnit.GetComponent<PlayerController>().joystick = Joystick;
         }
-        var playerInstance = Container.InstantiatePrefabForComponent<PlayerUnit>(playerUnit, playerSpawnPoint.position, Quaternion.identity, null);
-
+        
+        var playerInstance = Container.InstantiatePrefabForComponent<PlayerUnit>(PlayerUnit, playerSpawnPoint.position, Quaternion.identity, null);
+        
         Container.Bind<PlayerUnit>().FromInstance(playerInstance).AsSingle().NonLazy();
+
+        var healthBarInstance = Container.InstantiatePrefabForComponent<HealthBar>(HealthBar, playerInstance.transform);
+        Container.Bind<HealthBar>().FromInstance(healthBarInstance).AsSingle().NonLazy();
+        Container.BindInterfacesTo<HealthBar>();
+        //Container.Bind<IDamageable>().To<HealthData>().AsSingle();
+        //Container.Bind<IDamageable>().To<Damageable>().FromInstance(new Damageable());
         cinemachineVirtualCamera.Follow = playerInstance.transform;
+        
     }
 }
