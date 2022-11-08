@@ -18,12 +18,12 @@ public class PlayerInstaller : MonoInstaller
         }
         
         var playerInstance = Container.InstantiatePrefabForComponent<PlayerUnit>(PlayerUnit, playerSpawnPoint.position, Quaternion.identity, null);
-        
         Container.Bind<PlayerUnit>().FromInstance(playerInstance).AsSingle().NonLazy();
-
+        HealthBar.GetComponent<LookAtCam>().cam = cinemachineVirtualCamera.transform;
+        Container.Bind<IDamageable>().To<HealthBar>().AsSingle();
         var healthBarInstance = Container.InstantiatePrefabForComponent<HealthBar>(HealthBar, playerInstance.transform);
         Container.Bind<HealthBar>().FromInstance(healthBarInstance).AsSingle().NonLazy();
-        Container.BindInterfacesTo<HealthBar>();
+        
         //Container.Bind<IDamageable>().To<HealthData>().AsSingle();
         //Container.Bind<IDamageable>().To<Damageable>().FromInstance(new Damageable());
         cinemachineVirtualCamera.Follow = playerInstance.transform;

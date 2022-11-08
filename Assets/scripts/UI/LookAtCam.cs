@@ -5,8 +5,7 @@ using UnityEngine;
 using Zenject;
 
 public class LookAtCam : MonoBehaviour
-{  
-    [Inject]
+{
     public Transform cam;
 
     private void Start()
