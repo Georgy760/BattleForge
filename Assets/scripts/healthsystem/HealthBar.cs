@@ -6,26 +6,12 @@ using Zenject;
 
 namespace healthsystem
 {
-    public class HealthBar : MonoBehaviour, IDamageable
+    public class HealthBar : MonoBehaviour
     {
         [SerializeField] private SliderProgressBar _healthBarDisplay;
         [SerializeField] private SliderProgressBar _healthBarPreviewDisplay;
         private IDamageable _damageable;
-
-        public HealthBar(IDamageable damageable)
-        {
-            _damageable = damageable;
-
-            _healthBarDisplay.MinFillAmount = damageable.MinHealth;
-            _healthBarDisplay.MaxFillAmount = damageable.MaxHealth;
-            _healthBarDisplay.CurrentFillAmount = damageable.CurrentHealth;
-
-            _healthBarPreviewDisplay.MinFillAmount = damageable.MinHealth;
-            _healthBarPreviewDisplay.MaxFillAmount = damageable.MaxHealth;
-            _healthBarPreviewDisplay.CurrentFillAmount = damageable.CurrentHealth;
-
-            _damageable.HealthChanged += (sender, args) => UpdateHealthDisplay();
-        }
+        
         [Inject]
         public void Construct(IDamageable damageable)
         {
