@@ -1,9 +1,10 @@
 using Cinemachine;
 using healthsystem;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using Zenject;
 
-public class PlayerInstaller : MonoInstaller
+public class PlayerInstaller : MonoInstaller, IInitializable
 {
     [SerializeField] private PlayerUnit PlayerUnit;
     [SerializeField] private Transform playerSpawnPoint;
@@ -28,5 +29,10 @@ public class PlayerInstaller : MonoInstaller
         //Container.Bind<IDamageable>().To<Damageable>().FromInstance(new Damageable());
         cinemachineVirtualCamera.Follow = playerInstance.transform;
         
+    }
+
+    public void Initialize()
+    {
+        throw new System.NotImplementedException();
     }
 }
