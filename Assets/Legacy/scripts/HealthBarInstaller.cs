@@ -1,14 +1,17 @@
 using Cinemachine;
-using healthsystem;
+using Legacy.scripts.healthsystem;
 using UnityEngine;
 using Zenject;
 
-public class HealthBarInstaller : MonoInstaller
+namespace Legacy.scripts
 {
-    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-    [SerializeField] private HealthBar HealthBar;
-    public override void InstallBindings()
+    public class HealthBarInstaller : MonoInstaller
     {
+        [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+        [SerializeField] private HealthBar HealthBar;
+        public override void InstallBindings()
+        {
         
+        }
     }
 }

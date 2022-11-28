@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace healthsystem
+namespace Legacy.scripts.healthsystem
 {
     public class HealthData : IDamageable
     {

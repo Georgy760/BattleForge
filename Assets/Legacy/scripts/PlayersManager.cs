@@ -1,22 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersManager : MonoBehaviour
+namespace Legacy.scripts
 {
-    public static PlayersManager playersManager;
-
-    private void Awake()
+    public class PlayersManager : MonoBehaviour
     {
-        if (playersManager == null)
+        public static PlayersManager playersManager;
+
+        private void Awake()
         {
-            playersManager = this;
+            if (playersManager == null)
+            {
+                playersManager = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
     
+    }
 }

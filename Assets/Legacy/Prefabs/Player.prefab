@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 8788634814509415687}
   - component: {fileID: 8788634814509415686}
   - component: {fileID: 8788634814509415684}
-  - component: {fileID: 5959358339044380303}
   - component: {fileID: 8788634814509415690}
   - component: {fileID: 8788634814509415691}
   m_Layer: 0
@@ -151,18 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takenFlag: {fileID: 0}
   _teamColor: 1
---- !u!114 &5959358339044380303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8788634814509415680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be65b098c524ff04eb8bbe10f80673c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &8788634814509415690
 CapsuleCollider:
   m_ObjectHideFlags: 0

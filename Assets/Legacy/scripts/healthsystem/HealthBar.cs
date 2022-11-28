@@ -1,10 +1,9 @@
-using System;
 using DG.Tweening;
-using progressbar;
+using Legacy.scripts.progressbar;
 using UnityEngine;
 using Zenject;
 
-namespace healthsystem
+namespace Legacy.scripts.healthsystem
 {
     public class HealthBar : MonoBehaviour
     {

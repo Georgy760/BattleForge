@@ -1,32 +1,32 @@
-using Cinemachine;
-using healthsystem;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using Zenject;
 
-public class PlayerInstaller : MonoInstaller//, IInitializable
+namespace Legacy.scripts.Player
 {
-    [SerializeField] private PlayerController Player;
-    [SerializeField] private Transform StartPoint;
-    [SerializeField] private VariableJoystick Joystick;
-    //[SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
-    public override void InstallBindings()
+    public class PlayerInstaller : MonoInstaller//, IInitializable
     {
-        Container.BindInterfacesTo<PlayerInstaller>().FromInstance(this);
-        //Container.Bind(typeof(HealthBar)).FromInstance();
-        if(Player.GetComponent<PlayerController>())
+        [SerializeField] private PlayerController Player;
+        [SerializeField] private Transform StartPoint;
+        [SerializeField] private VariableJoystick Joystick;
+        //[SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+        public override void InstallBindings()
         {
-            Player.GetComponent<PlayerController>().joystick = Joystick;
+            Container.BindInterfacesTo<PlayerInstaller>().FromInstance(this);
+            //Container.Bind(typeof(HealthBar)).FromInstance();
+            if(Player.GetComponent<PlayerController>())
+            {
+                Player.GetComponent<PlayerController>().joystick = Joystick;
+            }
+        
+            PlayerController playerInstance = Container.InstantiatePrefabForComponent<PlayerController>(Player, StartPoint.position, Quaternion.identity, null);
+            Container.Bind<PlayerController>().FromInstance(playerInstance).AsSingle().NonLazy();
+            //cinemachineVirtualCamera.Follow = playerInstance.transform;
+        
         }
-        
-        PlayerController playerInstance = Container.InstantiatePrefabForComponent<PlayerController>(Player, StartPoint.position, Quaternion.identity, null);
-        Container.Bind<PlayerController>().FromInstance(playerInstance).AsSingle().NonLazy();
-        //cinemachineVirtualCamera.Follow = playerInstance.transform;
-        
-    }
 
-    /*public void Initialize()
+        /*public void Initialize()
     {
         throw new System.NotImplementedException();
     }*/
+    }
 }

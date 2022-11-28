@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FlagPlacement : MonoBehaviour
+namespace Legacy.scripts
 {
-    [SerializeField] private Team.teamColor _teamColor;
-    public Team team;
-
-    private void Start()
+    public class FlagPlacement : MonoBehaviour
     {
-        team = new Team(_teamColor);
+        [SerializeField] private Team.teamColor _teamColor;
+        public Team team;
+
+        private void Start()
+        {
+            team = new Team(_teamColor);
+        }
     }
 }

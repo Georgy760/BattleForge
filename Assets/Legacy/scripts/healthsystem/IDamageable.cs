@@ -1,6 +1,6 @@
 using System;
 
-namespace healthsystem
+namespace Legacy.scripts.healthsystem
 {
     public interface IDamageable
     {

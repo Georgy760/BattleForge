@@ -2,7 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-namespace progressbar
+namespace Legacy.scripts.progressbar
 {
     public abstract class ProgressBarBase : MonoBehaviour
     {

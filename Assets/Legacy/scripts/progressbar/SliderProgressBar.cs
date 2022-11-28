@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace progressbar
+namespace Legacy.scripts.progressbar
 {
     [RequireComponent(typeof(Slider))]
     public class SliderProgressBar : ProgressBarBase
