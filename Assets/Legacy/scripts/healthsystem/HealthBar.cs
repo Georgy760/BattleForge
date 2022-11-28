@@ -43,48 +43,5 @@ namespace healthsystem
                 _healthBarPreviewDisplay.SetFillAmountTween(_damageable.CurrentHealth, 1, Ease.InOutCubic);
             }
         }
-
-
-        public float MaxHealth
-        {
-            get => _damageable.MaxHealth;
-            set => _damageable.MaxHealth = value;
-        }
-
-        public float MinHealth
-        {
-            get => _damageable.MinHealth;
-            set => _damageable.MinHealth = value;
-        }
-
-        public float CurrentHealth
-        {
-            get => _damageable.CurrentHealth;
-            set => _damageable.CurrentHealth = value;
-        }
-
-        public float CurrentHealthNormalized => _damageable.CurrentHealthNormalized;
-
-        public event EventHandler HealthChanged
-        {
-            add => _damageable.HealthChanged += value;
-            remove => _damageable.HealthChanged -= value;
-        }
-
-        public event EventHandler HealthDepleted
-        {
-            add => _damageable.HealthDepleted += value;
-            remove => _damageable.HealthDepleted -= value;
-        }
-
-        public void ReduceHealthPoints(float amount)
-        {
-            _damageable.ReduceHealthPoints(amount);
-        }
-
-        public void RestoreHealthPoints(float amount)
-        {
-            _damageable.RestoreHealthPoints(amount);
-        }
     }
 }
