@@ -8,6 +8,7 @@ namespace Legacy.scripts.Player
         public Joystick joystick;
         [SerializeField] private Transform player;
         [SerializeField] private float speed;
+        
         void Start()
         {
         

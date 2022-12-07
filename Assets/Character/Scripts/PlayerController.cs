@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Common;
 using Zenject;
 
 public class PlayerController : MonoBehaviour
@@ -13,7 +14,17 @@ public class PlayerController : MonoBehaviour
     CharacterStats stats;
 
     private GameObject attackTarget;
-    
+    private IControllerService _controllerService;
+
+    [Inject]
+    private void Construct(IControllerService controllerService)
+    {
+        _controllerService = controllerService;
+
+        _controllerService.OnControllerHold += SetDestination;
+        _controllerService.OnAttackClicked += AttackTarget;
+    }
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -26,8 +37,15 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 
-    private void SetDestination(Vector3 destination)
+    private void OnDestroy()
     {
+        _controllerService.OnControllerHold -= SetDestination;
+        _controllerService.OnAttackClicked -= AttackTarget;
+    }
+
+    private void SetDestination(Vector2 destination)
+    {
+        Debug.Log("Vector2: " + destination);
         StopAllCoroutines();
         agent.isStopped = false;
         agent.destination = destination;

@@ -11,17 +11,23 @@ namespace Legacy.scripts.Player
         //[SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
         public override void InstallBindings()
         {
+            //PlayerInstall();
+        }
+
+        private void PlayerInstall()
+        {
             Container.BindInterfacesTo<PlayerInstaller>().FromInstance(this);
             //Container.Bind(typeof(HealthBar)).FromInstance();
-            if(Player.GetComponent<PlayerController>())
+            if (Player.GetComponent<PlayerController>())
             {
                 Player.GetComponent<PlayerController>().joystick = Joystick;
             }
-        
-            PlayerController playerInstance = Container.InstantiatePrefabForComponent<PlayerController>(Player, StartPoint.position, Quaternion.identity, null);
+
+            PlayerController playerInstance =
+                Container.InstantiatePrefabForComponent<PlayerController>(Player, StartPoint.position, Quaternion.identity,
+                    null);
             Container.Bind<PlayerController>().FromInstance(playerInstance).AsSingle().NonLazy();
             //cinemachineVirtualCamera.Follow = playerInstance.transform;
-        
         }
 
         /*public void Initialize()
