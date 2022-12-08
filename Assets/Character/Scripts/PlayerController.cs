@@ -45,20 +45,10 @@ public class PlayerController : MonoBehaviour
 
     private void SetDestination(Vector2 input)
     {
-        Debug.Log("Vector2: " + input);
         StopAllCoroutines();
-        if (Mathf.Abs(input.y) > 0.01f)
-        {
-            Vector3 destination = transform.position + transform.right * input.x + transform.forward * input.y;
-            agent.destination = destination;
-        }
-        else
-        {
-            agent.destination = transform.position;
-            transform.Rotate(0, input.x * agent.angularSpeed * Time.deltaTime, 0);
-        }
+        Vector3 destination = new Vector3(transform.position.x + input.x, 0, transform.position.z + input.y);
+        agent.destination = destination;
         agent.isStopped = false;
-        
     }
 
     private void DoStomp(Vector3 destination)

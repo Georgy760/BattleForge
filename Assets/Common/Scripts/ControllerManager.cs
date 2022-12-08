@@ -9,22 +9,26 @@ namespace Common
     
         public event Action<Vector2> OnControllerHold;
         public event Action<GameObject> OnAttackClicked;
-    
-        [SerializeField] private PlayerInput _playerInput;
-
+        private PlayerInputActions _playerInputActions;
+        
         private void Awake()
         {
-            if (!_playerInput)
-            {
-                _playerInput = GetComponent<PlayerInput>();
-            }
-
-            _playerInput.onActionTriggered += PlayerInput_onActionTriggered;
+            _playerInputActions = new PlayerInputActions();
+            _playerInputActions.Player.Enable();
+            _playerInputActions.Player.Move.performed += MovePreformed;
         }
-    
-        private void PlayerInput_onActionTriggered(InputAction.CallbackContext obj)
+
+        private void FixedUpdate()
         {
-            OnControllerHold?.Invoke(obj.ReadValue<Vector2>());
+            if (_playerInputActions.Player.Move.IsPressed())
+            {
+                OnControllerHold?.Invoke(_playerInputActions.Player.Move.ReadValue<Vector2>());
+            }
+        }
+
+        private void MovePreformed(InputAction.CallbackContext context)
+        {
+            OnControllerHold?.Invoke(context.ReadValue<Vector2>());
         }
     }
 }
