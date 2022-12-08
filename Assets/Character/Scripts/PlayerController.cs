@@ -43,12 +43,22 @@ public class PlayerController : MonoBehaviour
         _controllerService.OnAttackClicked -= AttackTarget;
     }
 
-    private void SetDestination(Vector2 destination)
+    private void SetDestination(Vector2 input)
     {
-        Debug.Log("Vector2: " + destination);
+        Debug.Log("Vector2: " + input);
         StopAllCoroutines();
+        if (Mathf.Abs(input.y) > 0.01f)
+        {
+            Vector3 destination = transform.position + transform.right * input.x + transform.forward * input.y;
+            agent.destination = destination;
+        }
+        else
+        {
+            agent.destination = transform.position;
+            transform.Rotate(0, input.x * agent.angularSpeed * Time.deltaTime, 0);
+        }
         agent.isStopped = false;
-        agent.destination = destination;
+        
     }
 
     private void DoStomp(Vector3 destination)
