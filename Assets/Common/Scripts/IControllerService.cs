@@ -6,6 +6,6 @@ namespace Common
     public interface IControllerService
     {
         event Action<Vector2> OnControllerHold;
-        event Action<GameObject> OnAttackClicked;
+        event Action<Vector2> OnAttackHold;
     }
 }

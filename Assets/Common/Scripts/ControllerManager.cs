@@ -8,7 +8,7 @@ namespace Common
     {
     
         public event Action<Vector2> OnControllerHold;
-        public event Action<GameObject> OnAttackClicked;
+        public event Action<Vector2> OnAttackHold;
         private PlayerInputActions _playerInputActions;
         
         private void Awake()
@@ -16,6 +16,7 @@ namespace Common
             _playerInputActions = new PlayerInputActions();
             _playerInputActions.Player.Enable();
             _playerInputActions.Player.Move.performed += MovePreformed;
+            _playerInputActions.Player.BaseAttack.performed += AttackPreformed;
         }
 
         private void FixedUpdate()
@@ -29,6 +30,11 @@ namespace Common
         private void MovePreformed(InputAction.CallbackContext context)
         {
             OnControllerHold?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        private void AttackPreformed(InputAction.CallbackContext context)
+        {
+            OnAttackHold?.Invoke(context.ReadValue<Vector2>());
         }
     }
 }

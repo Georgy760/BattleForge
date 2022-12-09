@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         _controllerService = controllerService;
 
         _controllerService.OnControllerHold += SetDestination;
-        _controllerService.OnAttackClicked += AttackTarget;
+        _controllerService.OnAttackHold += AttackTarget;
     }
 
     private void Awake()
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         _controllerService.OnControllerHold -= SetDestination;
-        _controllerService.OnAttackClicked -= AttackTarget;
+        _controllerService.OnAttackHold -= AttackTarget;
     }
 
     private void SetDestination(Vector2 input)
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(GoToTargetAndStomp(destination));
     }
 
-    private void AttackTarget(GameObject target)
+    private void AttackTarget(Vector2 input)
     {
         var weapon = stats.GetCurrentWeapon();
 
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
             StopAllCoroutines();
 
             agent.isStopped = false;
-            attackTarget = target;
+            //attackTarget = target;
             StartCoroutine(PursueAndAttackTarget());
         }
     }
